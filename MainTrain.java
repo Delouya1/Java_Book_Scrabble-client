@@ -1,7 +1,10 @@
 package test;
 
-import test.server.*;
 
+import test.server.BookScrabbleHandler;
+import test.server.ClientHandler;
+import test.server.DictionaryManager;
+import test.server.MyServer;
 
 import java.io.*;
 import java.net.Socket;
@@ -135,27 +138,27 @@ public class MainTrain {
 		}
 	}
 
-//	public static void testBSCH() {
-//		String s1[]=writeFile("s1.txt");
-//		String s2[]=writeFile("s2.txt");
-//
-//		Random r=new Random();
-//		int port=6000+r.nextInt(1000);
-//		MyServer s=new MyServer(port, new BookScrabbleHandler());
-//		s.start();
-//		runClient(port, "Q,s1.txt,s2.txt,"+s1[1], true);
-//		runClient(port, "Q,s1.txt,s2.txt,"+s2[4], true);
-//		runClient(port, "Q,s1.txt,s2.txt,2"+s1[1], false);
-//		runClient(port, "Q,s1.txt,s2.txt,3"+s2[4], false);
-//		runClient(port, "C,s1.txt,s2.txt,"+s1[9], true);
-//		runClient(port, "C,s1.txt,s2.txt,#"+s2[1], false);
-//		s.close();
-//	}
+	public static void testBSCH() {
+		String s1[]=writeFile("s1.txt");
+		String s2[]=writeFile("s2.txt");
+
+		Random r=new Random();
+		int port=6000+r.nextInt(1000);
+		MyServer s=new MyServer(port, new BookScrabbleHandler());
+		s.start();
+		runClient(port, "Q,s1.txt,s2.txt,"+s1[1], true);
+		runClient(port, "Q,s1.txt,s2.txt,"+s2[4], true);
+		runClient(port, "Q,s1.txt,s2.txt,2"+s1[1], false);
+		runClient(port, "Q,s1.txt,s2.txt,3"+s2[4], false);
+		runClient(port, "C,s1.txt,s2.txt,"+s1[9], true);
+		runClient(port, "C,s1.txt,s2.txt,#"+s2[1], false);
+		s.close();
+	}
 
 	public static void main(String[] args) {
 		if(testServer()) {
 			testDM();
-//			testBSCH();
+			testBSCH();
 		}
 
 		System.out.println("done");
